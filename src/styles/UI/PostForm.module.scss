@@ -1,0 +1,17 @@
+@import "src/styles/base";
+
+.PostForm {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  border: 0.35rem solid $main-color;
+  border-radius: 1rem;
+
+  box-sizing: border-box;
+
+  margin: 0 5rem;
+  padding: 2rem;
+
+  background-color: $background-color;
+}

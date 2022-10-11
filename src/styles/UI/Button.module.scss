@@ -1,0 +1,12 @@
+@import "src/styles/base";
+
+.Button {
+  border: 0.3rem solid $main-color;
+  border-radius: 1rem;
+
+  padding: 0.3rem;
+
+  background-color: $background-color;
+
+  cursor: pointer;
+}

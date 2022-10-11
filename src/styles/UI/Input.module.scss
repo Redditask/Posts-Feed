@@ -1,0 +1,9 @@
+@import "src/styles/base";
+
+.Input {
+  height: 3rem;
+  margin: 0 4rem;
+
+  border: 0.3rem solid $main-color;
+  border-radius: 1rem;
+}

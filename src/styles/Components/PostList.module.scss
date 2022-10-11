@@ -1,0 +1,16 @@
+@import "src/styles/base";
+
+.PostList{
+  border: 0.35rem solid $main-color;
+  border-radius: 1rem;
+
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+
+  margin: 0 5rem;
+  padding: 1rem;
+
+  background-color: $background-color;
+}
