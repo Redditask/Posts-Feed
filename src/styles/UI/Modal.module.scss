@@ -1,0 +1,31 @@
+@import "src/styles/base";
+
+.Modal {
+  position: fixed;
+
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  background: rgba(0,0,0, 0.8);
+
+  display: none;
+
+  &.active{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &Content{
+    padding: 2rem;
+
+    background: $background-color;
+
+    border: 0.35rem solid $main-color;
+    border-radius: 1rem;
+
+    min-width: 15.625rem;
+  }
+}
