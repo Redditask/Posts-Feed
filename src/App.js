@@ -1,6 +1,6 @@
 import styles from "./styles/App.module.scss";
 
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 import PostList from "./components/PostList";
 import PostForm from "./components/UI/PostForm";
@@ -8,12 +8,24 @@ import PostFilter from "./components/PostFilter";
 import Modal from "./components/UI/Modal";
 import Button from "./components/UI/Button";
 import {usePosts} from "./hooks/usePost";
+import PostServise from "./API/PostServise";
+import Loader from "./components/UI/Loader";
+import {useFetching} from "./hooks/useFetching";
 
 function App() {
     const [posts, setPosts] = useState([]);
     const [filter, setFilter] = useState({sort:"", search:""});
     const [modalStatus, setModalStatus] = useState(false);
+
     const sortedSearchedPosts = usePosts(posts, filter.sort, filter.search);
+    const [fetchPosts, isPostsLoading, error] = useFetching(async ()=>{
+            const posts = await PostServise.getData();
+            setPosts(posts)
+    })
+
+    useEffect(()=>{
+        fetchPosts();
+    },[])
 
     function createPost(newPost) {
         setPosts([...posts, newPost]);
@@ -34,7 +46,14 @@ function App() {
                 <Button text="Добавить пост" onClick={()=> setModalStatus(true)}/>
                 <PostFilter filter={filter} setFilter={setFilter}/>
             </div>
-            <PostList remove={removePost} posts={sortedSearchedPosts} title={"Список постов:"}/>
+            {isPostsLoading
+                ? <div style={{display:"flex", justifyContent:"center", marginTop:"20rem"}}><Loader/></div>
+                : <PostList remove={removePost} posts={sortedSearchedPosts} title={"Список постов:"}/>
+            }
+            {
+                error &&
+                <h1 style={{textAlign:"center", marginTop:"10rem", fontSize:"5rem"}}>Произошла ошибка!</h1>
+            }
         </div>
     );
 }
