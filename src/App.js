@@ -1,32 +1,19 @@
 import styles from "./styles/App.module.scss";
 
-import {useMemo, useState} from "react";
+import {useState} from "react";
 
 import PostList from "./components/PostList";
 import PostForm from "./components/UI/PostForm";
 import PostFilter from "./components/PostFilter";
 import Modal from "./components/UI/Modal";
 import Button from "./components/UI/Button";
+import {usePosts} from "./hooks/usePost";
 
 function App() {
-    const [posts, setPosts] = useState([
-        {id: 1, title: "JavaScript", content:"Язык программирования"},
-        {id: 2, title: "aa", content:"aa "},
-        {id: 3, title: "cc", content:"bb"},
-        {id: 4, title: "bb", content:"cc"}
-    ]);
+    const [posts, setPosts] = useState([]);
     const [filter, setFilter] = useState({sort:"", search:""});
     const [modalStatus, setModalStatus] = useState(false);
-
-    const sortedPosts = useMemo(()=>{
-        if(filter.sort) return [...posts].sort((a,b)=> a[filter.sort].localeCompare(b[filter.sort]));
-
-        return posts;
-    }, [filter.sort, posts])
-
-    const sortedSearchedPosts = useMemo(()=>{
-        return sortedPosts.filter(post => post.title.toLowerCase().includes(filter.search.toLowerCase()));
-    }, [filter.search, sortedPosts])
+    const sortedSearchedPosts = usePosts(posts, filter.sort, filter.search);
 
     function createPost(newPost) {
         setPosts([...posts, newPost]);
