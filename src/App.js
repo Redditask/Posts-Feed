@@ -48,7 +48,6 @@ function App() {
                 <PostFilter filter={filter} setFilter={setFilter}/>
             </div>
             <PostList remove={removePost} posts={sortedSearchedPosts} title={"Список постов:"}/>
-            }
         </div>
     );
 }
