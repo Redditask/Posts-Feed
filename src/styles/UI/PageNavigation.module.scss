@@ -1,0 +1,31 @@
+@import "src/styles/base";
+
+.PageNavigation {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.Page {
+  border: 0.3rem solid $main-color;
+  border-radius: 1rem;
+
+  padding: 0.3rem;
+  margin: 0 1.5rem;
+
+  background-color: $background-color;
+
+  cursor: pointer;
+
+  &__current{
+    border: 0.3rem solid crimson;
+    border-radius: 1rem;
+
+    padding: 0.3rem;
+    margin: 0 1.5rem;
+
+    background-color: $background-color;
+
+    cursor: pointer;
+  }
+}
