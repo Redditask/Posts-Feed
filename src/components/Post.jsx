@@ -2,8 +2,10 @@ import styles from "../styles/Components/Post.module.scss";
 
 import React from 'react';
 import Button from "./UI/Button";
+import {useNavigate} from "react-router-dom";
 
 const Post = ({post, number, remove}) => {
+    const navigate = useNavigate();
 
     return (
         <li className={styles.Post}>
@@ -12,7 +14,10 @@ const Post = ({post, number, remove}) => {
                 <hr/>
                 <div className={styles.Post__content}>{post.body}</div>
             </div>
-            <Button onClick={()=>remove(post)} text="Удалить"/>
+            <div className={styles.Post__buttons}>
+                <Button onClick={()=>remove(post)} text="Удалить"/>
+                <Button onClick={()=>navigate(`/posts/${post.id}`)} text="Открыть"/>
+            </div>
         </li>
     );
 };

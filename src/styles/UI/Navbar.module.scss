@@ -1,0 +1,27 @@
+@import "src/styles/base";
+
+.Navbar {
+  height: 4rem;
+  width: 99vw;
+
+  display: flex;
+  justify-content: right;
+  align-items: center;
+
+  border: 0.3rem solid $main-color;
+  border-radius: 1rem;
+
+  padding: 0.3rem;
+
+  background-color: $background-color;
+
+  &__link {
+    text-decoration: none;
+
+    border: 0.3rem solid $main-color;
+    border-radius: 1rem;
+
+    margin: 0 4rem;
+    padding: 0.3rem;
+  }
+}
