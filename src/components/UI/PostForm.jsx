@@ -6,7 +6,7 @@ import Button from "./Button";
 import React, {useState} from 'react';
 
 const PostForm = ({title, create}) => {
-    const [post, setPost] = useState({title:"", content:""});
+    const [post, setPost] = useState({title:"", body:""});
 
     function addNewPost(event){
         event.preventDefault();
@@ -14,7 +14,7 @@ const PostForm = ({title, create}) => {
             ...post, id:Date.now()
         }
         create(newPost);
-        setPost({title: "", content: ""})
+        setPost({title: "", body: ""})
     }
 
     return (
@@ -31,7 +31,7 @@ const PostForm = ({title, create}) => {
                     value = {post.content}
                     type="text"
                     placeholder="Содержание поста"
-                    onChange={event=> setPost({...post, content: event.target.value})}
+                    onChange={event=> setPost({...post, body: event.target.value})}
                 />
             </div>
             <Button onClick={addNewPost} text="Добавить пост"/>
